@@ -3,8 +3,10 @@ import { useState, useEffect } from "react";
 import useInterval from "./useInterval";
 
 type BallType = {
-  width: number;
-  height: number;
+  pos?: Vector2Type;
+  vector?: Vector2Type;
+  width?: number;
+  height?: number;
 };
 
 export type Vector2Type = {
@@ -12,31 +14,31 @@ export type Vector2Type = {
   y: number;
 };
 
-const Ball = ({width = 100, height = 120}: BallType) => {
-  const [pos, setPos] = useState<Vector2Type>({x: 0, y: 0});
-  const [vector, setVector] = useState<Vector2Type>({x: 1, y: 1});
+const Ball = ({pos = {x: 0, y: 0}, vector = {x: 1, y: 1}, width = 100, height = 120}: BallType) => {
+  const [posBall, setPosBall] = useState<Vector2Type>(pos);
+  const [vectorBall, setVectorBall] = useState<Vector2Type>(vector);
 
   useInterval(() => {
-    console.log(pos, vector);
-    if (pos.x <= 0) {
-      setVector(vector => ({...vector, x: 1}));
+    console.log(posBall, vectorBall);
+    if (posBall.x <= 0) {
+      setVectorBall(vectorBall => ({...vectorBall, x: vector.x}));
     }
-    if (pos.x >= width) {
-      setVector(vector => ({...vector, x: -1}));
+    if (posBall.x >= width) {
+      setVectorBall(vectorBall => ({...vectorBall, x: -vector.x}));
     }
-    if (pos.y <= 0) {
-      setVector(vector => ({...vector, y: 1}));
+    if (posBall.y <= 0) {
+      setVectorBall(vectorBall => ({...vectorBall, y: vector.y}));
     }
-    if (pos.y >= height) {
-      setVector(vector => ({...vector, y: -1}));
+    if (posBall.y >= height) {
+      setVectorBall(vectorBall => ({...vectorBall, y: -vector.y}));
     }
-    setPos(pos => ({x: pos.x + vector.x, y: pos.y + vector.y}));
+    setPosBall(posBall => ({x: posBall.x + vectorBall.x, y: posBall.y + vectorBall.y}));
   }, 10);
 
   return (
     <div>
-      <div css={styles.ball(pos.y, pos.x)} className={`relative`}>
-        ●{pos.x + pos.y}
+      <div css={styles.ball(posBall.y, posBall.x)} className={`relative`}>
+        ●
       </div>
     </div>
   );
