@@ -19,7 +19,6 @@ const Ball = ({pos = {x: 0, y: 0}, vector = {x: 1, y: 1}, width = 100, height = 
   const [vectorBall, setVectorBall] = useState<Vector2Type>(vector);
 
   useInterval(() => {
-    console.log(posBall, vectorBall);
     if (posBall.x <= 0) {
       setVectorBall(vectorBall => ({...vectorBall, x: vector.x}));
     }
