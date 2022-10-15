@@ -36,7 +36,7 @@ const Ball = ({pos = {x: 0, y: 0}, vector = {x: 1, y: 1}, width = 100, height = 
 
   return (
     <div>
-      <div css={styles.ball(posBall.y, posBall.x)} className={`relative`}>
+      <div css={styles.ball(posBall.y, posBall.x)} className={"relative inline-block"}>
         ●
       </div>
     </div>
