@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Ball from "../components/Ball";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
@@ -8,6 +8,7 @@ const TopPage = () => {
       <Header />
       <div className="grow container mx-auto my-4 px-4">
         TopPage
+        <Ball />
       </div>
       <Footer />
     </div>

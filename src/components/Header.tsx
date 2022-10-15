@@ -10,16 +10,6 @@ const Header = () => {
     <ul className={`menu ${horizontal ? "menu-horizontal" : "bg-base-200"} p-0`}>
       <li><Link to="/">hoge1</Link></li>
       <li><Link to="/">hoge2</Link></li>
-      <li tabIndex={0}>
-        <a>
-          Parent
-          <AiOutlineDown />
-        </a>
-        <ul className="p-2 bg-base-200">
-          <li><a>Submenu 1</a></li>
-          <li><a>Submenu 2</a></li>
-        </ul>
-      </li>
     </ul>;
 
   return (
